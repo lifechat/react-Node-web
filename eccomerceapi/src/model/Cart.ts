@@ -1,7 +1,7 @@
 import {model,Schema,Document,Model} from 'mongoose'
 
 export interface ICart extends Document {
-
+    
 }
 
 const CartSchema = new Schema({

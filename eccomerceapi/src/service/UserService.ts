@@ -1,11 +1,13 @@
 import { IUserModel} from '../model/User'
 
 class UserService{
-    
+
     constructor(){
 
     }
 
+
+    
 
 }
 
