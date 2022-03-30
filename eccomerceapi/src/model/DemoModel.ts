@@ -12,7 +12,7 @@ export interface IDemo extends Document{
 
 const DemoSchema = new Schema({
     name:{type:String,required:true},
-    description: { type: String, required: true },
+    description: { type: String,required:true},
     createDate: { type: Date, default: Date.now },
     updatedDate: { type: Date, default: Date.now },
     createdBy: { type: String, required: false },

@@ -1,20 +1,17 @@
 'use strict'
 
 import Mongoose from 'mongoose'
-import {APILogger} from '../log/api.logger'
+import APILogger from '../log/api.logger'
 require('dotenv').config();
 
 
-export class DB{
-    private logger:APILogger
+class DB{
 
     private  database:Mongoose.Connection | undefined
 
     url: String | undefined;
 
-    constructor(){
-        this.logger = new APILogger();
-    }
+    constructor(){}
 
     // private static DB_URI:String = `${process.env.MONGO_URL}`
     connect(url:string = `${process.env.MONGO_URL}`){
@@ -23,16 +20,16 @@ export class DB{
         }
 
         Mongoose.connect(url).then(()=>{
-            this.logger.info("connect is succesful",null)
+            APILogger.info("connect is succesful",null)
         }).catch((err)=>{
-            this.logger.error(err)
+            APILogger.error(err)
         })
         this.database = Mongoose.connection;
         this.database.once('open',async () =>{
-            this.logger.info("Connected to database",null);
+            APILogger.info("Connected to database",null);
         })
         this.database.on('error',()=>{
-            this.logger.error("Error connecting to database");
+            APILogger.error("Error connecting to database");
         })
     }
 
@@ -42,9 +39,11 @@ export class DB{
         }
         Mongoose.disconnect();
         this.database.once("close", async () => {
-            this.logger.info("Diconnected  to database",null);
+            APILogger.info("Diconnected  to database",null);
         });
     }
 
 }
 
+
+export default new DB();

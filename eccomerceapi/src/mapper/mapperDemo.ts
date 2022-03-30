@@ -1,15 +1,13 @@
-import {DB} from "../config/db.config"
+import DB from "../config/db.config"
 import {IDemoModel} from "../model/DemoModel"
-import {APILogger} from "../log/api.logger"
+import APILogger from "../log/api.logger"
 
 
 
 export class mapperDemo {
-    private logger:APILogger;
 
     constructor(){
-        new DB().connect();
-        this.logger = new APILogger();
+        DB.connect();
     }   
 
     async getDemo(){
@@ -23,7 +21,7 @@ export class mapperDemo {
         try {
             data = await IDemoModel.create(demo);
         } catch (error) {
-            this.logger.error('Error::' + error);
+            APILogger.error('Error::' + error);
         }
 
         return data;
@@ -34,7 +32,7 @@ export class mapperDemo {
         try {
             data = await IDemoModel.updateOne(demo);
         } catch (error) {
-            this.logger.error("Error::"+error);
+            APILogger.error("Error::"+error);
         }
 
         return data;
@@ -44,7 +42,7 @@ export class mapperDemo {
         try {
             data = await IDemoModel.deleteOne({_id:demoid});
         } catch (error) {
-            this.logger.error("Error::"+error);
+            APILogger.error("Error::"+error);
         }
 
         return {status:`${data.deletedCount > 0 ? true : false}`}
