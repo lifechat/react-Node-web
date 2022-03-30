@@ -10,19 +10,19 @@ export class DemoService{
     }
 
     async getDemo(){
-        return await this.mapper
+        return await this.mapper.getDemo();
     }
 
-    async createDemo(){
-        return await this.mapper;
+    async createDemo(demo:any){
+        return await this.mapper.createDemo(demo);
     }
 
-    async updateDemo(){
-        return await this.mapper;
+    async updateDemo(demo:any){
+        return await this.mapper.updateDemo(demo);
     }
 
-    async deleteDemo(){
-        return await this.mapper;
+    async deleteDemo(demoId:any){
+        return await this.mapper.deleteDemo(demoId);
     }
 
 }

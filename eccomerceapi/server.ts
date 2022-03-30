@@ -14,9 +14,3 @@ const logger = new APILogger();
 app.listen(process.env.PORT || PORT,()=>{
     logger.info(`server listening on port ${PORT}`,null);
 })
-
-
-const db = new DB();
-
-db.connect();
-// connect();

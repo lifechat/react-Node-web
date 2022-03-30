@@ -4,3 +4,5 @@
 .env.test.local
 .env.production.local
 node_modules
+package-lock.json
+yarn.lock
